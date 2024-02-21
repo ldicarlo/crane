@@ -974,11 +974,16 @@ baz = { version = "baz-vers", features = ["baz-feat", "baz-feat2"] }
             name = "sqlx-mysql"
             documentation = "https://docs.rs/sqlx"
             description = "MySQL driver implementation for SQLx. Not for direct use; see the `sqlx` crate for details."
-            version.workspace = true
-            license.workspace = true
-            edition.workspace = true
-            authors.workspace = true
-            repository.workspace = true
+version = "0.7.3"
+license = "MIT OR Apache-2.0"
+edition = "2021"
+authors = [
+                "Ryan Leckey <leckey.ryan@gmail.com>",
+                "Austin Bonander <austin.bonander@gmail.com>",
+                "Chloe Ross <orangesnowfox@gmail.com>",
+                "Daniel Akhterov <akhterovd@gmail.com>",
+            ]
+repository = "https://github.com/launchbadge/sqlx"
             # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
             [features]
@@ -990,9 +995,6 @@ baz = { version = "baz-vers", features = ["baz-feat", "baz-feat2"] }
 
             [dependencies]
             sqlx-core = { version = "=0.7.3", path = "sqlx-core" }
-
-            # Support for tokio::io::AsyncWrite in mysql::infile
-            tokio = { workspace = true, optional = true }
 
             # Futures crates
             futures-channel = { version = "0.3.19", default-features = false, features = ["sink", "alloc", "std"] }
@@ -1010,13 +1012,8 @@ baz = { version = "baz-vers", features = ["baz-feat", "baz-feat2"] }
             rsa = "0.9"
             sha1 = { version = "0.10.1", default-features = false }
             sha2 = { version = "0.10.0", default-features = false }
-
-            # Type Integrations (versions inherited from `[workspace.dependencies]`)
-            bigdecimal = { version = "0.3.0", optional = true }
             chrono = { version = "0.4.22", default-features = false , optional = true }
-            rust_decimal = { version = "1.26.1", optional = true }
             time = { version = "0.3.14", features = ["formatting", "parsing", "macros"] , optional = true }
-            uuid = { version = "1.1.2", optional = true }
 
             # Misc
             atoi = "2.0"
@@ -1047,8 +1044,21 @@ baz = { version = "baz-vers", features = ["baz-feat", "baz-feat2"] }
             version = "1"
             features = ["time", "net", "sync", "fs", "io-util", "rt"]
             default-features = false
-            optional = true
-        "#;
+optional = true 
+
+            # Type Integrations (versions inherited from `[workspace.dependencies]`)
+            [dependencies.bigdecimal ]
+version = "0.3.0"
+optional = true 
+
+[            dependencies.rust_decimal ]
+version = "1.26.1"
+optional = true 
+
+[            dependencies.uuid ]
+version = "1.1.2"
+optional = true 
+            "#;
 
         super::merge(&mut cargo_toml, &root_toml);
 
