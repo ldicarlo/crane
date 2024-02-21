@@ -614,7 +614,7 @@ baz = { version = "baz-vers", features = ["baz-feat", "baz-feat2"] }
             tracing = { version = "0.1.37", features = ["log"] }
             whoami = { version = "1.2.1", default-features = false }
 
-            serde = { version = "1.0.144", optional = true }"
+            serde = { version = "1.0.144", optional = true }
             "#,
         ).unwrap();
 
